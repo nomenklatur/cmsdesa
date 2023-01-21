@@ -12,11 +12,16 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6 text-black">
-  
+          @if (session()->has('auth_error'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{session('auth_error')}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
           <div class="d-flex align-items-center px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
   
-            <form style="width: 23rem;">
-  
+            <form style="width: 23rem;" method="POST" action="/login">
+              @csrf
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Masuk</h3>
   
               <div class="form-outline mb-4">
