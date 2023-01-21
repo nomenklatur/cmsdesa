@@ -47,7 +47,7 @@
           <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="@if($item->gambar) {{$item->gambar}} @else https://source.unsplash.com/1600x900/?{{$item->judul}} @endif" class="img-fluid rounded-start" alt="...">
+                <img src="@if($item->gambar) {{asset('storage/'.$item->gambar)}} @else https://source.unsplash.com/1600x900/?{{$item->judul}} @endif" class="img-fluid rounded-start" alt="...">
               </div>
               <div class="col-md-8">
                 <div class="card-body">

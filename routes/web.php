@@ -17,4 +17,5 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/masuk', [Authentication::class, 'index'])->name('login')->middleware('guest');
 Route::post('/masuk', [Authentication::class, 'login'])->middleware('guest');
 Route::get('/artikel', [HomeController::class, 'list_artikel']);
+Route::get('/artikel/{artikel}', [HomeController::class, 'show_artikel']);
 

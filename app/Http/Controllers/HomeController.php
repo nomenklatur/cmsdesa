@@ -15,7 +15,10 @@ class HomeController extends Controller
     }
 
     public function show_artikel(Article $artikel){
-
+        return view('public/article', [
+            'title' => $artikel->judul,
+            'artikel' => $artikel
+        ]);
     }
 
     public function list_artikel(){
