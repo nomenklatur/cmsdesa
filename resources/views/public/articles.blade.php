@@ -1,7 +1,7 @@
 @extends('layout/public')
 
 @section('content')
-  <div class="container card shadow mt-3 p-3 mb-3">
+  <div class="container p-3">
     <div class="row mt-3 mb-3 text-center">
       <h3 class="text-uppercase">artikel seputar desa ringin putih</h3>
       <a href="/" class="text-decoration-none text-danger"> <i class='bx bx-left-arrow-alt'></i>Kembali</a>

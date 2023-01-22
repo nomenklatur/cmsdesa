@@ -17,7 +17,7 @@ class Authentication extends Controller
             'password' => 'required',
         ]);
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])){
-            $request->session->regenerate();
+            $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
 

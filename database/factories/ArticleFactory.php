@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
             'judul' => $this->faker->sentence(),
             'preview' => $this->faker->paragraph(1),
             'uri' => Str::random(40),
-            'teks' => $this->faker->paragraph(5),
+            'teks' => $this->faker->paragraph(20),
             'gambar' => null,
         ];
     }

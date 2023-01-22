@@ -13,4 +13,10 @@ class Article extends Model
     public function getRouteKeyName(){
         return 'uri';
     }
+
+    public function scopeFilter($query, array $filters){
+        if(isset($filters['cari'])? $filters['cari']: false){
+             return $query->where('judul', 'like', '%'.$filters['cari'].'%');
+        }
+    }
 }

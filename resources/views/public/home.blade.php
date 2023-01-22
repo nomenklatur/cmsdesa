@@ -1,19 +1,19 @@
 @extends('layout/public')
 
 @section('content')
-    <div class="container mt-2 card shadow p-2 mb-3">
+    <div class="container p-3">
       <div class="row mb-3">
         <div class="col-lg-8">
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded">
               <div class="carousel-item active">
-                <img src="https://source.unsplash.com/1600x900/?pedesaan" class="d-block w-100 h-50" alt="...">
+                <img src="https://source.unsplash.com/1600x900/?pedesaan" class="d-block w-100 h-50 img-fluid" alt="..." style="border-radius: 10px">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/1600x900/?masyarakat" class="d-block w-100" alt="...">
+                <img src="https://source.unsplash.com/1600x900/?indonesia" class="d-block w-100" alt="..." style="border-radius: 10px">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/1600x900/?pasar" class="d-block w-100" alt="...">
+                <img src="https://source.unsplash.com/1600x900/?pasar" class="d-block w-100" alt="..." style="border-radius: 10px">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -54,7 +54,7 @@
                   <h5 class="card-title">{{$item->judul}}</h5>
                   <p class="card-text">T{{$item->preview}}</p>
                   <p class="card-text"><small class="text-muted">{{$item->created_at->diffForHumans()}}</small></p>
-                  <a href="/artikel/{{$item->uri}}" class="text-decoration-none btn btn-sm btn-info">Baca selengkapnya <i class='bx bx-chevron-right'></i></a>
+                  <a href="/artikel/{{$item->uri}}" class="text-decoration-none btn btn-sm" style="background-color: #e7bc91">Baca selengkapnya <i class='bx bx-chevron-right'></i></a>
                 </div>
               </div>
             </div>

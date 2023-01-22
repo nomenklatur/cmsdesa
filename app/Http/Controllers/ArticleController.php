@@ -14,7 +14,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $artikel = Article::latest();
+        return view('admin/artikel/list', [
+            'title' => 'Daftar Artikel',
+            'data' => $artikel->filter(request(['cari']))->paginate(10)->withQueryString(),
+        ]);
     }
 
     /**
