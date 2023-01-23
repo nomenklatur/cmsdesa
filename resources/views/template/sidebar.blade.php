@@ -1,36 +1,37 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-    <span class="fs-4">Halo, {{auth()->user()->name}}</span>
+    <img src="/images/logo.png" alt="" class="img-fluid" style="width: 30px">
+    <span class="fs-5 fw-bold ms-2">Halo, {{auth()->user()->name}}</span>
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto fs-5 sticky-top">
     <li class="nav-item">
-      <a href="/dashboard" class="nav-link link-dark @if($title === 'Beranda') bg-danger text-light @endif">
+      <a href="/dashboard" class="nav-link link-dark" @if($title === 'Beranda') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-house-door me-2"></i>Beranda
       </a>
     </li>
     <li class="nav-item">
-      <a href="/admin/article" class="nav-link link-dark @if($title === 'Daftar Artikel') bg-danger text-light @endif">
+      <a href="/admin/article" class="nav-link link-dark "@if($title === 'Artikel') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-file-earmark-post me-2"></i>Artikel
       </a>
     </li>
     <li>
-      <a href="/biodata/" class="nav-link link-dark @if($title === 'Biodata Siswa') bg-danger text-light @endif">
+      <a href="/biodata/" class="nav-link link-dark" @if($title === 'Biodata Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-flag me-2"></i>Pemerintahan
       </a>
     </li>
     <li>
-      <a href="/data-ibu/" class="nav-link link-dark @if($title === 'Data Ibu Siswa') bg-danger text-light @endif">
+      <a href="/data-ibu/" class="nav-link link-dark" @if($title === 'Data Ibu Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-geo-alt me-2"></i>Profil Desa
       </a>
     </li>
     <li>
-      <a href="/data-ayah/" class="nav-link link-dark @if($title === 'Data Ayah Siswa') bg-danger text-light @endif">
+      <a href="/data-ayah/" class="nav-link link-dark" @if($title === 'Data Ayah Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-people me-2"></i>Kelembagaan
       </a>
     </li>
     <li>
-      <a href="/data-wali/" class="nav-link link-dark @if($title === 'Data Wali Siswa') bg-danger text-light @endif">
+      <a href="/data-wali/" class="nav-link link-dark" @if($title === 'Data Wali Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-clipboard-data me-2"></i>Data Desa
       </a>
     </li>
@@ -52,3 +53,9 @@
     </ul>
   </div>
 </div>
+<style>
+  .nav-link:hover{
+    background-color: #a47148;
+    color:antiquewhite;
+  }
+</style>

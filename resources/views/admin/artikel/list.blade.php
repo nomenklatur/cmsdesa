@@ -15,12 +15,12 @@
           <form action="/admin/article">
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Cari artikel..." name="cari" value="{{ request('cari')}}">
-              <button class="btn btn-danger" type="submit"><i class="bi bi-search"></i></button>
+              <button class="btn text-white" type="submit" style="background-color: #a47148"><i class="bi bi-search"></i></button>
             </div>
           </form>
         </div>
         <div class="col-lg-3">
-          <a href="/admin/article/create" class="btn btn-danger shadow"><i class="bi bi-plus me-2"></i>Tambah</a>
+          <a href="/admin/article/create" class="btn shadow text-white" style="background-color: #a47148"><i class="bi bi-plus me-2"></i>Tambah</a>
         </div>
       </div>
       <div class="row mb-3 justify-content-center">

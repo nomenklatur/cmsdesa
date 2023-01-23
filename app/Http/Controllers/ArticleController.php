@@ -16,7 +16,7 @@ class ArticleController extends Controller
     {
         $artikel = Article::latest();
         return view('admin/artikel/list', [
-            'title' => 'Daftar Artikel',
+            'title' => 'Artikel',
             'data' => $artikel->filter(request(['cari']))->paginate(10)->withQueryString(),
         ]);
     }
@@ -28,7 +28,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/artikel/create', [
+            'title' => 'Artikel',
+        ]);
     }
 
     /**
@@ -39,7 +41,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'judul' => 'required|'
+        ]);
     }
 
     /**
