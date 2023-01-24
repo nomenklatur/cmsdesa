@@ -5,6 +5,7 @@ use App\Http\Controllers\Authentication;
 use App\Http\Controllers\HomeController;
 use App\HTTP\Controllers\DashboardController;
 use App\HTTP\Controllers\ArticleController;
+use App\HTTP\Controllers\GovController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +26,4 @@ Route::get('/artikel/{artikel}', [HomeController::class, 'show_artikel']);
 Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');

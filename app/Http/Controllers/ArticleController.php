@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -42,8 +44,17 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'judul' => 'required|'
+            'judul' => 'required|min:4|max:50',
+            'gambar' => 'image|file|max:4096',
+            'teks' => 'required|min:10|max:500'
         ]);
+        if($request->file('gambar')){
+            $data['gambar'] = $request->file('gambar')->store('gambar_artikel');
+        }
+        $data['preview'] = Str::limit(strip_tags($request['teks']), 30, '...');
+        $data['uri'] = Str::random(40);
+        Article::create($data);
+        return redirect('/admin/article')->with('article_created', 'Berhasil menambahkan artikel');
     }
 
     /**
@@ -54,7 +65,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('admin/artikel/detail', [
+            'title' => 'Artikel',
+            'data' => $article
+        ]);
     }
 
     /**
@@ -65,7 +79,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin/artikel/edit', [
+            'title' => 'Artikel',
+            'data' => $article
+        ]);
     }
 
     /**
@@ -77,7 +94,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $data = $request->validate([
+            'judul' => 'required|min:4|max:50',
+            'gambar' => 'image|file|max:4096',
+            'teks' => 'required|min:10|max:500'
+        ]);
+        if ($request->hasFile('gambar')) {
+            if($article->gambar != null){
+                Storage::delete($article->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('gambar_artikel');
+        }
+        $data['preview'] = Str::limit(strip_tags($request['teks']), 30, '...');
+        Article::where('id', $article->id)->update($data);
+        return redirect('/admin/article')->with('article_edited', 'Artikel berhasil diperbarui');
     }
 
     /**
@@ -88,6 +118,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        Storage::delete($article->gambar);
+        Article::destroy($article->id);
+        return redirect('/admin/article')->with('article_deleted', 'Artikel berhasil dihapus');
     }
 }

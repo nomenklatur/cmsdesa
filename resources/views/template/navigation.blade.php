@@ -13,7 +13,8 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="pemerintahanDropDown">
             <li><a class="dropdown-item" href="pemerintahan/visimisi">Visi dan Misi</a></li>
-            <li><a class="dropdown-item" href="pemerintahan/struktur">Struktur Pemerintahan</a></li>
+            <li><a class="dropdown-item" href="pemerintahan/struktur">Pemerintahan Desa</a></li>
+            <li><a class="dropdown-item" href="pemerintahan/bpd">Badan Permusyawaratan Desa</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

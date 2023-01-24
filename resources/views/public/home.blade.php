@@ -65,7 +65,7 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{$item->judul}}</h5>
-                  <p class="card-text">T{{$item->preview}}</p>
+                  <p class="card-text">{{$item->preview}}</p>
                   <p class="card-text"><small class="text-muted">{{$item->created_at->diffForHumans()}}</small></p>
                   <a href="/artikel/{{$item->uri}}" class="text-decoration-none btn btn-sm" style="background-color: #e7bc91">Baca selengkapnya <i class='bx bx-chevron-right'></i></a>
                 </div>

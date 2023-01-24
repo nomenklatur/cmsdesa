@@ -11,6 +11,21 @@
         </div>
       </div>
       <div class="row mb-3 justify-content-center">
+        @if (session()->has('article_created'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('article_created')}}
+          </div>            
+        @endif
+        @if (session()->has('article_deleted'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-trash me-2"></i>{{session('article_deleted')}}
+          </div>            
+        @endif
+        @if (session()->has('article_edited'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-pen me-2"></i>{{session('article_edited')}}
+          </div>            
+        @endif
         <div class="col-lg-6">
           <form action="/admin/article">
             <div class="input-group mb-3">
@@ -47,7 +62,7 @@
                     <form action="/admin/article/{{$item->uri}}" method="post" class="d-inline">
                       @method('DELETE')
                       @csrf
-                      <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                      <button class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin akan menghapus artikel ini?')"><i class="bi bi-trash"></i></button>
                     </form>
                   </td>
                 </tr>
