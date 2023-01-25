@@ -16,7 +16,7 @@
       </a>
     </li>
     <li>
-      <a href="/biodata/" class="nav-link link-dark" @if($title === 'Pemerintahan') style="background-color: #a47148; color:antiquewhite" @endif>
+      <a href="/admin/pemerintahan" class="nav-link link-dark" @if($title === 'Pemerintahan') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-flag me-2"></i>Pemerintahan
       </a>
     </li>

@@ -37,5 +37,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'adminketiga@desa.com',
             'password' => Hash::make('admin123')
         ]);
+
+        DB::table('visions')->insert([
+            'visi' => 'ini adalah visi dari desa kami',
+            'misi' => 'sedangkan ini adalah misi desa kami'
+        ]);
     }
 }

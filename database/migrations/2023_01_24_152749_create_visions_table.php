@@ -15,6 +15,8 @@ class CreateVisionsTable extends Migration
     {
         Schema::create('visions', function (Blueprint $table) {
             $table->id();
+            $table->text('visi');
+            $table->text('misi');
             $table->timestamps();
         });
     }

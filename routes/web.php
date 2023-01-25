@@ -27,3 +27,4 @@ Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
+Route::put('/admin/pemerintahan', [GovController::class, 'ubah_visi'])->middleware('auth');
