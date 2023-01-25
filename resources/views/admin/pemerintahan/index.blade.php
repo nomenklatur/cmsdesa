@@ -7,6 +7,21 @@
             <i class="bi bi-check me-2"></i>{{session('visi_edited')}}
           </div>            
         @endif
+        @if (session()->has('officials_created'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('officials_created')}}
+          </div>            
+        @endif
+        @if (session()->has('officials_updated'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('officials_updated')}}
+          </div>            
+        @endif
+        @if (session()->has('officials_deleted'))
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('officials_deleted')}}
+          </div>            
+        @endif
       <div class="row mb-3">
         <div class="col-lg-12">
           <!-- Tabs navs -->
@@ -59,9 +74,41 @@
               aria-labelledby="ex2-tab-1"
             >
               <div class="container">
-                <div class="row">
-                  <div class="col-lg-8">
-
+                <div class="row mb-2">
+                  <div class="col-lg-6">
+                    <h4 class="text-uppercase">anggota pemerintahan desa</h4>
+                  </div>
+                  <div class="col-lg-6 text-end">
+                    <a href="/admin/pegawai/create" class="btn text-light shadow" style="background-color: #a47148"><i class="bi bi-plus me-2"></i>Tambah</a>
+                  </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                  <div class="col-lg-12">
+                    <table class="table text-center">
+                      <thead>
+                        <tr>
+                          <th>Nomor</th>
+                          <th>Nama</th>
+                          <th>Jabatan</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      @foreach ($pegawai as $item)
+                        <tr>
+                          <td>{{$loop->iteration}}</td>
+                          <td>{{$item->nama}}</td>
+                          <td>{{$item->jabatan}}</td>
+                          <td>
+                            <a href="/admin/pegawai/{{$item->uri}}/edit" class="btn btn-sm btn-warning shadow"><i class="bi bi-pen me-1"></i>ubah</a>
+                            <form action="/admin/pegawai/{{$item->uri}}" method="POST" class="d-inline">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" class="btn btn-danger btn-sm shadow" onclick="return confirm('Anda yakin akan menghapus pegawai ini?')"><i class="bi bi-trash me-1"></i>hapus</button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </table>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Authentication;
 use App\Http\Controllers\HomeController;
 use App\HTTP\Controllers\DashboardController;
 use App\HTTP\Controllers\ArticleController;
+use App\HTTP\Controllers\OfficialsController;
 use App\HTTP\Controllers\GovController;
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/artikel', [HomeController::class, 'list_artikel']);
 Route::get('/artikel/{artikel}', [HomeController::class, 'show_artikel']);
 
 Route::resource('/admin/article', ArticleController::class)->middleware('auth');
+Route::resource('/admin/pegawai', OfficialsController::class)->except(['index', 'show'])->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
