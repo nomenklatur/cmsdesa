@@ -12,9 +12,9 @@
             Pemerintahan Desa
           </a>
           <ul class="dropdown-menu" aria-labelledby="pemerintahanDropDown">
-            <li><a class="dropdown-item" href="pemerintahan/visimisi">Visi dan Misi</a></li>
-            <li><a class="dropdown-item" href="pemerintahan/struktur">Pemerintahan Desa</a></li>
-            <li><a class="dropdown-item" href="pemerintahan/bpd">Badan Permusyawaratan Desa</a></li>
+            <li><a class="dropdown-item" href="/pemerintahan/visimisi">Visi dan Misi</a></li>
+            <li><a class="dropdown-item" href="/pemerintahan/struktur">Pemerintahan Desa</a></li>
+            <li><a class="dropdown-item" href="/pemerintahan/bpd">Badan Permusyawaratan Desa</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -22,8 +22,8 @@
             Profil Desa
           </a>
           <ul class="dropdown-menu" aria-labelledby="profilDropDown">
-            <li><a class="dropdown-item" href="desa/geografi">Geografis dan Demografis</a></li>
-            <li><a class="dropdown-item" href="desa/sarana">Sarana dan Prasarana</a></li>
+            <li><a class="dropdown-item" href="/desa/geografi">Geografis dan Ekonomi</a></li>
+            <li><a class="dropdown-item" href="/desa/sarana">Sarana dan Prasarana</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -36,6 +36,7 @@
           </ul>
         </li>
         <a class="nav-link text-light" href="#">Data Desa</a>
+        <a class="nav-link text-light" href="https://sakura.dukcapil.klaten.go.id/" target="_blank">Layanan Desa</a>
         @if (!auth()->user())
           <a class="nav-link btn btn-sm text-light ms-2 shadow" href="/masuk" style="background-color: #a47148">Masuk <i class='bx bx-log-in'></i></a>
         @else

@@ -8,6 +8,8 @@ use App\HTTP\Controllers\ArticleController;
 use App\HTTP\Controllers\OfficialsController;
 use App\HTTP\Controllers\CouncilController;
 use App\HTTP\Controllers\GovController;
+use App\HTTP\Controllers\InfController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +33,11 @@ Route::get('/pemerintahan/bpd', [HomeController::class, 'show_bpd']);
 Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 Route::resource('/admin/pegawai', OfficialsController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/bpd', CouncilController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/infrastruktur', InfController::class)->except(['index', 'show'])->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
 Route::put('/admin/pemerintahan', [GovController::class, 'ubah_visi'])->middleware('auth');
+Route::get('/admin/profil_desa/', [GovController::class, 'show_profil'])->middleware('auth');
+Route::put('/admin/profil_desa/geografis', [GovController::class, 'ubah_geografis'])->middleware('auth');
+Route::put('/admin/profil_desa/ekonomi', [GovController::class, 'ubah_ekonomi'])->middleware('auth');

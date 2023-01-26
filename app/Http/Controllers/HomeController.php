@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function show_visi_misi(){
         return view('public/visi_misi', [
             'title' => 'Visi & Misi',
-            'data' => Vision::where('id', 1),
+            'data' => Vision::where('id', 1)->get(),
         ]);
     }
 

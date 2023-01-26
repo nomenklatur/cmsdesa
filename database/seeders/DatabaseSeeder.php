@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Article;
 use App\Models\Official;
 use App\Models\Council;
+use App\Models\Infrastructure;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,12 @@ class DatabaseSeeder extends Seeder
         Article::factory(10)->create();
         Official::factory(20)->create();
         Council::factory(20)->create();
+        Infrastructure::factory(10)->create();
+
+        DB::table('profiles')->insert([
+            'geografis' => Str::random(20),
+            'ekonomi' => Str::random(30),
+        ]);
 
         DB::table('users')->insert([
             'name' => 'Awang Candra',

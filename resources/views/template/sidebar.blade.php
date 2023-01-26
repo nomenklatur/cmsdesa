@@ -21,7 +21,7 @@
       </a>
     </li>
     <li>
-      <a href="/data-ibu/" class="nav-link link-dark" @if($title === 'Data Ibu Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
+      <a href="/admin/profil_desa" class="nav-link link-dark" @if($title === 'Data Ibu Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-geo-alt me-2"></i>Profil Desa
       </a>
     </li>
