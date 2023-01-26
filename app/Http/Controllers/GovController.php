@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vision;
 use App\Models\Official;
+use App\Models\Council;
 
 class GovController extends Controller
 {
@@ -12,7 +13,8 @@ class GovController extends Controller
         return view('admin/pemerintahan/index', [
             'title' => 'Pemerintahan',
             'data' => Vision::all(),
-            'pegawai' => Official::all()
+            'pegawai' => Official::all(),
+            'bpd' => Council::all()
         ]);
     }
 

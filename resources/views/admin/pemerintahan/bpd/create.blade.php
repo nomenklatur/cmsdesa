@@ -4,7 +4,7 @@
     <div class="container card shadow mt-3 mb-3 p-3">
       <div class="row justify-content-center mb-3">
         <div class="col-lg-10">
-          <form action="/admin/pegawai" method="POST" enctype="multipart/form-data">
+          <form action="/admin/bpd" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
               <label for="nama" class="form-label">Nama Lengkap</label>

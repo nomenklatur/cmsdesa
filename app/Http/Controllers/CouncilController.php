@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Official;
-use Illuminate\Http\Request;
+use App\Models\Council;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class OfficialsController extends Controller
+class CouncilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class OfficialsController extends Controller
      */
     public function create()
     {
-        return view('admin/pemerintahan/pemerintahan_desa/create', [
+        return view('admin/pemerintahan/bpd/create', [
             'title' => 'Pemerintahan Desa',
         ]);
     }
@@ -46,20 +46,20 @@ class OfficialsController extends Controller
             'jabatan' => 'required|string'
         ]);
         if($request->file('gambar')){
-            $data['gambar'] = $request->file('gambar')->store('pemerintahan_desa');
+            $data['gambar'] = $request->file('gambar')->store('badan_permusyawaratan_desa');
         }
         $data['uri'] = Str::random(30);
-        Official::create($data);
-        return redirect('/admin/pemerintahan')->with('officials_created', 'Pegawai berhasil ditambahkan');
+        Council::create($data);
+        return redirect('/admin/pemerintahan')->with('councils_created', 'Anggota BPD berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Official  $official
+     * @param  \App\Models\Council  $bpd
      * @return \Illuminate\Http\Response
      */
-    public function show(Official $official)
+    public function show(Council $bpd)
     {
         //
     }
@@ -67,14 +67,14 @@ class OfficialsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Official  $official
+     * @param  \App\Models\Council  $bpd
      * @return \Illuminate\Http\Response
      */
-    public function edit(Official $pegawai)
+    public function edit(Council $bpd)
     {
-        return view('admin/pemerintahan/pemerintahan_desa/edit', [
-            'title' => $pegawai->nama,
-            'data' => $pegawai
+        return view('admin/pemerintahan/bpd/edit', [
+            'title' => $bpd->nama,
+            'data' => $bpd
         ]);
     }
 
@@ -82,10 +82,10 @@ class OfficialsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Official  $pegawai
+     * @param  \App\Models\Council  $bpd
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Official $pegawai)
+    public function update(Request $request, Council $bpd)
     {
         $data = $request->validate([
             'nama' => 'required|min:4|max:50',
@@ -94,25 +94,25 @@ class OfficialsController extends Controller
             'jabatan' => 'required|string'
         ]);
         if ($request->hasFile('gambar')) {
-            if($pegawai->gambar != null){
-                Storage::delete($pegawai->gambar);
+            if($bpd->gambar != null){
+                Storage::delete($bpd->gambar);
             }
-            $data['gambar'] = $request->file('gambar')->store('pemerintahan_desa');
+            $data['gambar'] = $request->file('gambar')->store('badan_permusyawaratan_desa');
         }
-        Official::where('id', $pegawai->id)->update($data);
-        return redirect('/admin/pemerintahan')->with('officials_updated', 'Pegawai berhasil diperbarui');
+        Council::where('id', $bpd->id)->update($data);
+        return redirect('/admin/pemerintahan')->with('councils_updated', 'Anggota BPD berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Official  $pegawai
+     * @param  \App\Models\Council  $bpd
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Official $pegawai)
+    public function destroy(Council $bpd)
     {
-        Storage::delete($pegawai->gambar);
-        Official::destroy($pegawai->id);
-        return redirect('/admin/pemerintahan')->with('officials_deleted', 'Pegawai berhasil dihapus');
+        Storage::delete($bpd->gambar);
+        Council::destroy($bpd->id);
+        return redirect('/admin/pemerintahan')->with('councils_deleted', 'Anggota BPD berhasil dihapus');
     }
 }

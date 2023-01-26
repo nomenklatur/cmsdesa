@@ -12,6 +12,21 @@
             <i class="bi bi-check me-2"></i>{{session('officials_created')}}
           </div>            
         @endif
+        @if (session()->has('councils_created'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('councils_created')}}
+          </div>            
+        @endif
+        @if (session()->has('councils_updated'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('councils_updated')}}
+          </div>            
+        @endif
+        @if (session()->has('councils_deleted'))
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('councils_deleted')}}
+          </div>            
+        @endif
         @if (session()->has('officials_updated'))
           <div class="alert alert-success" role="alert">
             <i class="bi bi-check me-2"></i>{{session('officials_updated')}}
@@ -88,6 +103,7 @@
                       <thead>
                         <tr>
                           <th>Nomor</th>
+                          <th></th>
                           <th>Nama</th>
                           <th>Jabatan</th>
                           <th>Aksi</th>
@@ -96,6 +112,7 @@
                       @foreach ($pegawai as $item)
                         <tr>
                           <td>{{$loop->iteration}}</td>
+                          <td><img src="@if ($item->gambar === NULL) @if($item->jenis_kelamin == 'L') /images/pria.png @else /images/wanita.png @endif @else {{asset('storage/'.$item->gambar)}}  @endif" alt="" width="50" height="50" class="rounded-circle me-2"></td>
                           <td>{{$item->nama}}</td>
                           <td>{{$item->jabatan}}</td>
                           <td>
@@ -119,7 +136,47 @@
               role="tabpanel"
               aria-labelledby="ex2-tab-2"
             >
-              Tab 2 content
+            <div class="container">
+              <div class="row mb-2">
+                <div class="col-lg-6">
+                  <h4 class="text-uppercase">badan permusyawaratan desa</h4>
+                </div>
+                <div class="col-lg-6 text-end">
+                  <a href="/admin/pegawai/create" class="btn text-light shadow" style="background-color: #a47148"><i class="bi bi-plus me-2"></i>Tambah</a>
+                </div>
+              </div>
+              <div class="row mb-3 justify-content-center">
+                <div class="col-lg-12">
+                  <table class="table text-center">
+                    <thead>
+                      <tr>
+                        <th>Nomor</th>
+                        <th></th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    @foreach ($bpd as $item)
+                      <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td><img src="@if ($item->gambar === NULL) @if($item->jenis_kelamin == 'L') /images/pria.png @else /images/wanita.png @endif @else {{asset('storage/'.$item->gambar)}}  @endif"  alt="" width="50" height="50" class="rounded-circle me-2"/></td>
+                        <td>{{$item->nama}}</td>
+                        <td>{{$item->jabatan}}</td>
+                        <td>
+                          <a href="/admin/bpd/{{$item->uri}}/edit" class="btn btn-sm btn-warning shadow"><i class="bi bi-pen me-1"></i>ubah</a>
+                          <form action="/admin/bpd/{{$item->uri}}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm shadow" onclick="return confirm('Anda yakin akan menghapus pegawai ini?')"><i class="bi bi-trash me-1"></i>hapus</button>
+                          </form>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </table>
+                </div>
+              </div>
+            </div>
             </div>
             <div
               class="tab-pane fade"

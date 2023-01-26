@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\HTTP\Controllers\DashboardController;
 use App\HTTP\Controllers\ArticleController;
 use App\HTTP\Controllers\OfficialsController;
+use App\HTTP\Controllers\CouncilController;
 use App\HTTP\Controllers\GovController;
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,13 @@ Route::post('/masuk', [Authentication::class, 'login'])->middleware('guest');
 Route::post('/keluar', [Authentication::class, 'logout'])->middleware('auth');
 Route::get('/artikel', [HomeController::class, 'list_artikel']);
 Route::get('/artikel/{artikel}', [HomeController::class, 'show_artikel']);
+Route::get('/pemerintahan/visimisi', [HomeController::class, 'show_visi_misi']);
+Route::get('/pemerintahan/struktur', [HomeController::class, 'show_struktur']);
+Route::get('/pemerintahan/bpd', [HomeController::class, 'show_bpd']);
 
 Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 Route::resource('/admin/pegawai', OfficialsController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/bpd', CouncilController::class)->except(['index', 'show'])->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');

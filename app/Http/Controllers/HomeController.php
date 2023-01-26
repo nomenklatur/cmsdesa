@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Vision;
+use App\Models\Official;
+use App\Models\Council;
 
 class HomeController extends Controller
 {
@@ -25,6 +28,27 @@ class HomeController extends Controller
         return view('public/articles', [
             'title' => 'Berita Terkini',
             'artikel' => Article::latest()->get()
+        ]);
+    }
+
+    public function show_visi_misi(){
+        return view('public/visi_misi', [
+            'title' => 'Visi & Misi',
+            'data' => Vision::where('id', 1),
+        ]);
+    }
+
+    public function show_struktur(){
+        return view('public/struktur', [
+            'title' => 'Struktur Pemerintahan',
+            'data' => Official::all(),
+        ]);
+    }
+
+    public function show_bpd(){
+        return view('public/bpd', [
+            'title' => 'Badan Permusyawaratan Desa',
+            'data' => Council::all()
         ]);
     }
 }

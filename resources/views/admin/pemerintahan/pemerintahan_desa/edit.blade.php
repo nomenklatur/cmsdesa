@@ -4,7 +4,7 @@
     <div class="container card shadow mt-3 mb-3 p-3">
       <div class="row justify-content-center mb-3">
         <div class="col-lg-10">
-          <form action="/admin/pegawai/{{$data->uri}}" method="POST">
+          <form action="/admin/pegawai/{{$data->uri}}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="mb-3">
@@ -14,6 +14,27 @@
                   <div class="invalid-feedback">
                     {{$message}}
                   </div>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label for="gambar" class="form-label">Gambar</label>
+              <input class="form-control @error('gambar') is-invalid @enderror" type="file" name="gambar">
+              @error('gambar')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>                
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+              <select class="form-select" name="jenis_kelamin">
+                <option value="L" @if ('L' == $data->jenis_kelamin) selected @endif>Laki-laki</option>
+                <option value="P" @if ('P' == $data->jenis_kelamin) selected @endif>Perempuan</option>
+              </select>
+              @error('jenis_kelamin')
+                <div class="invalid-feedback">
+                  {{ $message }}  
+                </div>                   
               @enderror
             </div>
             <div class="mb-3">
