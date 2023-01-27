@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Infrastructure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class InfController extends Controller
 {
@@ -24,7 +26,9 @@ class InfController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/profil/infrastruktur/create', [
+            'title' => 'Tambah sarana desa',
+        ]);
     }
 
     /**
@@ -35,7 +39,18 @@ class InfController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'sarana' => 'required|string',
+            'jumlah' => 'required|min:1',
+            'satuan' => 'required|string',
+            'gambar' => 'image|file|max:4000'
+        ]);
+        if($request->file('gambar')){
+            $data['gambar'] = $request->file('gambar')->store('gambar_sarana');
+        }
+        $data['uri'] = Str::random(30);
+        Infrastructure::create($data);
+        return redirect('/admin/profil_desa')->with('inf_created', 'Sarana dan prasarana berhasil ditambahkan');
     }
 
     /**
@@ -55,9 +70,12 @@ class InfController extends Controller
      * @param  \App\Models\Infrastructure  $infrastructure
      * @return \Illuminate\Http\Response
      */
-    public function edit(Infrastructure $infrastructure)
+    public function edit(Infrastructure $infrastruktur)
     {
-        //
+        return view('admin/profil/infrastruktur/edit', [
+            'title' => 'Ubah sarana dan prasarana',
+            'data' => $infrastruktur
+        ]);
     }
 
     /**
@@ -67,9 +85,22 @@ class InfController extends Controller
      * @param  \App\Models\Infrastructure  $infrastructure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Infrastructure $infrastructure)
+    public function update(Request $request, Infrastructure $infrastruktur)
     {
-        //
+        $data = $request->validate([
+            'sarana' => 'required|string',
+            'jumlah' => 'required|min:1',
+            'satuan' => 'required|string',
+            'gambar' => 'image|file|max:4000'
+        ]);
+        if ($request->hasFile('gambar')) {
+            if($infrastruktur->gambar != null){
+                Storage::delete($infrastruktur->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('gambar_sarana');
+        }
+        Infrastructure::where('id', $infrastruktur->id)->update($data);
+        return redirect('/admin/profil_desa')->with('inf_updated', 'Sarana dan prasarana berhasil diperbarui');
     }
 
     /**
@@ -78,8 +109,10 @@ class InfController extends Controller
      * @param  \App\Models\Infrastructure  $infrastructure
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Infrastructure $infrastructure)
+    public function destroy(Infrastructure $infrastruktur)
     {
-        //
+        Storage::delete($infrastruktur);
+        Infrastructure::destroy($infrastruktur->id);
+        return redirect('/admin/profil_desa')->with('inf_deleted', 'Sarana dan prasarana berhasil dihapus');
     }
 }

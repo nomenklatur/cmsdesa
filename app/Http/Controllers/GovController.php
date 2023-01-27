@@ -8,6 +8,7 @@ use App\Models\Official;
 use App\Models\Council;
 use App\Models\Profile;
 use App\Models\Infrastructure;
+use App\Models\Photo;
 
 class GovController extends Controller
 {
@@ -33,7 +34,8 @@ class GovController extends Controller
         return view('admin/profil/index', [
             'title' => 'Profil Desa',
             'data' => Profile::all(),
-            'infrastruktur' => Infrastructure::all()
+            'infrastruktur' => Infrastructure::all(),
+            'foto' => Photo::all()
         ]);
     }
 

@@ -9,7 +9,8 @@ use App\HTTP\Controllers\OfficialsController;
 use App\HTTP\Controllers\CouncilController;
 use App\HTTP\Controllers\GovController;
 use App\HTTP\Controllers\InfController;
-
+use App\HTTP\Controllers\PhotoController;
+use App\HTTP\Controllers\UnionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,8 @@ Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 Route::resource('/admin/pegawai', OfficialsController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/bpd', CouncilController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/infrastruktur', InfController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/foto', PhotoController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/kelembagaan', UnionController::class)->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');

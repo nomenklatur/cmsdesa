@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Vision;
 use App\Models\Official;
 use App\Models\Council;
+use App\Models\Photo;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,7 @@ class HomeController extends Controller
         return view('public/home', [
             'title' => 'Desa Ringin Putih',
             'artikel' => Article::latest()->take(3)->get(),
+            'foto' => Photo::latest()->get(),
         ]);
     }
 

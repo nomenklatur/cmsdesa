@@ -21,17 +21,17 @@
       </a>
     </li>
     <li>
-      <a href="/admin/profil_desa" class="nav-link link-dark" @if($title === 'Data Ibu Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
+      <a href="/admin/profil_desa" class="nav-link link-dark" @if($title === 'Profil Desa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-geo-alt me-2"></i>Profil Desa
       </a>
     </li>
     <li>
-      <a href="/data-ayah/" class="nav-link link-dark" @if($title === 'Data Ayah Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
+      <a href="/admin/kelembagaan" class="nav-link link-dark" @if($title === 'Kelembagaan Desa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-people me-2"></i>Kelembagaan
       </a>
     </li>
     <li>
-      <a href="/data-wali/" class="nav-link link-dark" @if($title === 'Data Wali Siswa') style="background-color: #a47148; color:antiquewhite" @endif>
+      <a href="/admin/data_desa" class="nav-link link-dark" @if($title === 'Data Desa') style="background-color: #a47148; color:antiquewhite" @endif>
         <i class="bi bi-clipboard-data me-2"></i>Data Desa
       </a>
     </li>
@@ -42,8 +42,6 @@
       <strong>{{auth()->user()->name}}</strong>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-      <li><a class="dropdown-item" href="/password/">Ganti Password</a></li>
-      <li><hr class="dropdown-divider"></li>
       <li>
         <form action="/keluar" method="POST">
           @csrf
