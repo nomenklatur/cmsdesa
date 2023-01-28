@@ -46,7 +46,7 @@ Route::resource('/admin/data_umum', GeneralController::class)->except(['index', 
 Route::resource('/admin/data_profesi', ProfessionController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/kelembagaan', UnionController::class)->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [App\HTTP\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
 Route::put('/admin/pemerintahan', [GovController::class, 'ubah_visi'])->middleware('auth');
 Route::get('/admin/profil_desa/', [GovController::class, 'show_profil'])->middleware('auth');
