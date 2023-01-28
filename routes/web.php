@@ -11,6 +11,8 @@ use App\HTTP\Controllers\GovController;
 use App\HTTP\Controllers\InfController;
 use App\HTTP\Controllers\PhotoController;
 use App\HTTP\Controllers\UnionController;
+use App\HTTP\Controllers\GeneralController;
+use App\HTTP\Controllers\ProfessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,17 +32,24 @@ Route::get('/artikel/{artikel}', [HomeController::class, 'show_artikel']);
 Route::get('/pemerintahan/visimisi', [HomeController::class, 'show_visi_misi']);
 Route::get('/pemerintahan/struktur', [HomeController::class, 'show_struktur']);
 Route::get('/pemerintahan/bpd', [HomeController::class, 'show_bpd']);
+Route::get('/desa/geografi', [HomeController::class, 'show_geografi']);
+Route::get('/desa/sarana', [HomeController::class, 'show_sarana']);
+Route::get('/kelembagaan/{lembaga}', [HomeController::class, 'show_lembaga']);
+Route::get('/data', [HomeController::class, 'show_data']);
 
 Route::resource('/admin/article', ArticleController::class)->middleware('auth');
 Route::resource('/admin/pegawai', OfficialsController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/bpd', CouncilController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/infrastruktur', InfController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/foto', PhotoController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/data_umum', GeneralController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('/admin/data_profesi', ProfessionController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/kelembagaan', UnionController::class)->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
 Route::put('/admin/pemerintahan', [GovController::class, 'ubah_visi'])->middleware('auth');
 Route::get('/admin/profil_desa/', [GovController::class, 'show_profil'])->middleware('auth');
 Route::put('/admin/profil_desa/geografis', [GovController::class, 'ubah_geografis'])->middleware('auth');
 Route::put('/admin/profil_desa/ekonomi', [GovController::class, 'ubah_ekonomi'])->middleware('auth');
+Route::get('/admin/data_desa', [GovController::class, 'show_data'])->middleware('auth');

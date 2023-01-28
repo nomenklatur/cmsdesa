@@ -2,6 +2,21 @@
 
 @section('content')
     <div class="container card shadow mt-3 mb-3 p-3">
+      @if (session()->has('union_created'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('union_created')}}
+          </div>            
+        @endif
+        @if (session()->has('union_updated'))
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('union_updated')}}
+          </div>            
+        @endif
+        @if (session()->has('union_deleted'))
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-check me-2"></i>{{session('union_deleted')}}
+          </div>            
+        @endif
       @if (!count($lembaga))
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
@@ -33,7 +48,7 @@
                 <tr>
                   <td>{{$loop->iteration}}</td>
                   <td>{{$item->nama}}</td>
-                  <td>{{$item->keterangan}}</td>
+                  <td>{!!$item->keterangan!!}</td>
                   <td>
                     <a href="/admin/kelembagaan/{{$item->uri}}/edit" class="btn btn-sm btn-warning"><i class="bi bi-pen"></i></a>
                     <form action="/admin/kelembagaan/{{$item->uri}}" method="post" class="d-inline">

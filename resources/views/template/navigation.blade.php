@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg rounded sticky-top" style="background-color: #bc8a5f">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/">Desa Ringin Putih</a>
+    <a class="navbar-brand text-white" href="/">Desa Ringinputih</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,11 +31,12 @@
             Kelembagaan
           </a>
           <ul class="dropdown-menu" aria-labelledby="kelembagaanDropDown">
-            <li><a class="dropdown-item" href="kelembagaan/karangtaruna">Karang Taruna</a></li>
-            <li><a class="dropdown-item" href="kelembagaan/pkk">PKK</a></li>
+            @foreach ($lembaga as $item)
+              <li><a class="dropdown-item" href="kelembagaan/{{$item->uri}}">{{$item->nama}}</a></li>
+            @endforeach
           </ul>
         </li>
-        <a class="nav-link text-light" href="#">Data Desa</a>
+        <a class="nav-link text-light" href="/data">Data Desa</a>
         <a class="nav-link text-light" href="https://sakura.dukcapil.klaten.go.id/" target="_blank">Layanan Desa</a>
         @if (!auth()->user())
           <a class="nav-link btn btn-sm text-light ms-2 shadow" href="/masuk" style="background-color: #a47148">Masuk <i class='bx bx-log-in'></i></a>

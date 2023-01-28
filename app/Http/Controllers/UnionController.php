@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Union;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UnionController extends Controller
 {
@@ -14,7 +15,10 @@ class UnionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/kelembagaan/list', [
+            'title' => 'Kelembagaan',
+            'lembaga' => Union::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class UnionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/kelembagaan/create', [
+            'title' => 'Kelembagaan Desa',
+        ]);
     }
 
     /**
@@ -35,7 +41,13 @@ class UnionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nama' => 'required|min:4|max:50',
+            'keterangan' => 'required'
+        ]);
+        $data['uri'] = Str::random(40);
+        Union::create($data);
+        return redirect('/admin/kelembagaan')->with('union_created', 'Lembaga berhasil ditambahkan');
     }
 
     /**
@@ -44,7 +56,7 @@ class UnionController extends Controller
      * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function show(Union $union)
+    public function show(Union $kelembagaan)
     {
         //
     }
@@ -55,9 +67,12 @@ class UnionController extends Controller
      * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function edit(Union $union)
+    public function edit(Union $kelembagaan)
     {
-        //
+        return view('admin/kelembagaan/edit', [
+            'title' => 'Kelembagaan Desa',
+            'data' => $kelembagaan
+        ]);
     }
 
     /**
@@ -67,9 +82,15 @@ class UnionController extends Controller
      * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Union $union)
+    public function update(Request $request, Union $kelembagaan)
     {
-        //
+        $data = $request->validate([
+            'nama' => 'required|min:5|max:50',
+            'keterangan' => 'required'
+        ]);
+
+        Union::where('id', $kelembagaan->id)->update($data);
+        return redirect('/admin/kelembagaan')->with('union_updated', 'Lembaga berhasil diperbarui');
     }
 
     /**
@@ -78,8 +99,9 @@ class UnionController extends Controller
      * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Union $union)
+    public function destroy(Union $kelembagaan)
     {
-        //
+        Union::destroy($kelembagaan->id);
+        return redirect('/admin/kelembagaan')->with('union_deleted', 'Lembaga berhasil dihapus');
     }
 }

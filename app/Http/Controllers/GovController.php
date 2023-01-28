@@ -9,6 +9,8 @@ use App\Models\Council;
 use App\Models\Profile;
 use App\Models\Infrastructure;
 use App\Models\Photo;
+use App\Models\General;
+use App\Models\Profession;
 
 class GovController extends Controller
 {
@@ -53,5 +55,13 @@ class GovController extends Controller
         ]);
         Profile::where('id', 1)->update($data);
         return redirect('/admin/profil_desa')->with('ekonomi_edited', 'Keterangan ekonomi desa berhasil diubah');
+    }
+
+    public function show_data(){
+        return view('admin/data_desa/index', [
+            'title' => 'Data Desa',
+            'data_profesi' => Profession::all(),
+            'data_umum' => General::all()
+        ]);
     }
 }
