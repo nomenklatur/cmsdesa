@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\HomeController;
-use App\HTTP\Controllers\Dashboard;
-use App\HTTP\Controllers\ArticleController;
-use App\HTTP\Controllers\OfficialsController;
-use App\HTTP\Controllers\CouncilController;
-use App\HTTP\Controllers\GovController;
-use App\HTTP\Controllers\InfController;
-use App\HTTP\Controllers\PhotoController;
-use App\HTTP\Controllers\UnionController;
-use App\HTTP\Controllers\GeneralController;
-use App\HTTP\Controllers\ProfessionController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\OfficialsController;
+use App\Http\Controllers\CouncilController;
+use App\Http\Controllers\GovController;
+use App\Http\Controllers\InfController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\UnionController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\ProfessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +46,7 @@ Route::resource('/admin/data_umum', GeneralController::class)->except(['index', 
 Route::resource('/admin/data_profesi', ProfessionController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/admin/kelembagaan', UnionController::class)->middleware('auth');
 
-Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/admin/pemerintahan', [GovController::class, 'index'])->middleware('auth');
 Route::put('/admin/pemerintahan', [GovController::class, 'ubah_visi'])->middleware('auth');
 Route::get('/admin/profil_desa/', [GovController::class, 'show_profil'])->middleware('auth');
