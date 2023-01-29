@@ -21,7 +21,11 @@ class HomeController extends Controller
             'title' => 'Desa Ringin Putih',
             'artikel' => Article::latest()->take(3)->get(),
             'foto' => Photo::latest()->get(),
-            'lembaga' => Union::all()
+            'lembaga' => Union::all(),
+            'visi' => Vision::all(),
+            'kades' => Official::firstWhere('jabatan', 'Kepala Desa'),
+            'sekdes' => Official::firstWhere('jabatan', 'Sekretaris Desa'),
+            'bendes' => Official::firstWhere('jabatan', 'Kaur Keuangan'),
         ]);
     }
 

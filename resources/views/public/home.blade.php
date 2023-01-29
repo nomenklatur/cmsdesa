@@ -72,12 +72,12 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15814.513936359082!2d110.73358221799909!3d-7.722949597766027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a38ee8140553f%3A0x777205c947ac06d0!2sRinginputih%2C%20Kec.%20Karangdowo%2C%20Kabupaten%20Klaten%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1674467780221!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="card-body">
               <h5 class="card-title">Desa Ringin Putih</h5>
-              <p class="card-text">Slogan Desa</p>
+              <q>{{$visi[0]->visi}}</q>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Kepala Desa: </li>
-              <li class="list-group-item">Sekretaris: </li>
-              <li class="list-group-item">Bendahara: </li>
+              <li class="list-group-item">Kepala Desa: {{$kades? $kades->nama: ''}}</li>
+              <li class="list-group-item">Sekretaris: {{$sekdes? $sekdes->nama: ''}}</li>
+              <li class="list-group-item">{{$bendes? $bendes->jabatan : 'Bendahara'}}: {{$bendes? $bendes->nama: '' }}</li>
             </ul>
           </div>
         </div>

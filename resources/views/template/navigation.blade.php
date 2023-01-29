@@ -32,7 +32,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="kelembagaanDropDown">
             @foreach ($lembaga as $item)
-              <li><a class="dropdown-item" href="kelembagaan/{{$item->uri}}">{{$item->nama}}</a></li>
+              <li><a class="dropdown-item" href="/kelembagaan/{{$item->uri}}">{{$item->nama}}</a></li>
             @endforeach
           </ul>
         </li>

@@ -46,6 +46,14 @@
                   </div>
               @enderror
             </div>
+            <div class="mb-3 alert alert-info">
+              <i class="bi bi-exclamation fs-3"></i> Catatan
+              <ul>
+                <li>Gunakan "Kepala Desa" untuk jabatan pemimpin desa</li>
+                <li>Gunakan "Sekrestaris Desa" untuk jabatan sekretaris desa</li>
+                <li>Gunakan "Kaur Keuangan" untuk jabatan keuangan desa</li>
+              </ul>
+            </div>
             <div class="mb-3">
               <button class="btn w-100 text-light" style="background-color: #a47148" type="submit"><i class="bi bi-cloud me-2"></i>Simpan</button>
             </div>
