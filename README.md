@@ -1,4 +1,4 @@
-images.githubusercontent.com/88763669/221351214-68023262-3892-49fb-8ad9-c8cd175e926e.png)
+![ringinputih](https://user-images.githubusercontent.com/88763669/221351265-7f089e5e-b283-4d24-929d-2458aa33ed9c.png)
 
 # Desa Ringinputih
 > This is a content management system built for Desa Ringinputih
@@ -21,4 +21,5 @@ images.githubusercontent.com/88763669/221351214-68023262-3892-49fb-8ad9-c8cd175e
 - run `$ php artisan serve`
 
 # Contact
-Created by [Dimas Eka Putra](https://www.linkedin.com/in/masdimasekaputra/) - feel free to reach out!![ringinputih](https://user-
+Created by [Dimas Eka Putra](https://www.linkedin.com/in/masdimasekaputra/) - feel free to reach out!!
+
