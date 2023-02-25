@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+images.githubusercontent.com/88763669/221351214-68023262-3892-49fb-8ad9-c8cd175e926e.png)
 
 # Desa Ringinputih
 > This is a content management system built for Desa Ringinputih
@@ -21,4 +21,4 @@
 - run `$ php artisan serve`
 
 # Contact
-Created by [Dimas Eka Putra](https://www.linkedin.com/in/masdimasekaputra/) - feel free to reach out!
+Created by [Dimas Eka Putra](https://www.linkedin.com/in/masdimasekaputra/) - feel free to reach out!![ringinputih](https://user-
